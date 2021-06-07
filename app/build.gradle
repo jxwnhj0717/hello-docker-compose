@@ -1,0 +1,54 @@
+//buildscript {
+//    repositories {
+//        jcenter()
+//    }
+//
+//    dependencies {
+//        classpath 'net.idlestate:gradle-download-dependencies-plugin:1.+'
+//    }
+//}
+
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.4.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+//apply plugin: 'net.idlestate.download-dependencies'
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+bootJar {
+    archiveFileName = "app.jar"
+}
+
+task copyDependencies(type: Copy) {
+    from configurations.default
+    into 'build/dependencies'
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    implementation 'org.springframework.cloud:spring-cloud-context:3.0.3'
+    implementation 'commons-io:commons-io:2.8.0'
+    implementation files("${System.getProperty('java.home')}/../lib/tools.jar")
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+}
+
+test {
+    useJUnitPlatform()
+}
+

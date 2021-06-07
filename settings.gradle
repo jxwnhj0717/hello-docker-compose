@@ -1,0 +1,3 @@
+rootProject.name = 'hello-docker-compose'
+include 'agent'
+include 'app'

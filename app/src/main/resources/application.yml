@@ -1,0 +1,12 @@
+server:
+  port: 8080
+spring:
+  data:
+    mongodb:
+      database: hello_docker_compose
+app:
+  reload:
+    classdir: "classes"
+    agentdir: ""
+  user:
+    welcome: "hello worldf!"

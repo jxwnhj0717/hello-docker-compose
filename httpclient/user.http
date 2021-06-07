@@ -1,0 +1,12 @@
+GET http://localhost:8083/user/
+
+###
+
+POST http://localhost:8083/user/
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "huangjin",
+  "age": 19
+}

@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+jar {
+    archiveFileName = "HotSwapAgent.jar"
+    manifest {
+        attributes(
+            "Agent-Class": "com.example.agent.MyInstrumentationAgent",
+            "Can-Redefine-Classes": true,
+            "Can-Retransform-Classes": true
+        )
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.slf4j:slf4j-api:1.7.30'
+}
